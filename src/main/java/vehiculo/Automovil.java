@@ -1,14 +1,18 @@
-package database;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package vehiculo;
 
 /**
  *
- * @author mmazzucco
+ * @author juansa6201
  */
-public class Connection {
+public class Automovil implements Vehiculo {
+
+    @Override
+    public void acelerar() {
+        System.out.println("Acelerar el auto");
+    }
     
 }
