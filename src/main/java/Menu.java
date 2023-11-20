@@ -11,7 +11,6 @@ import persona.Vendedor;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author juansa6201
@@ -29,20 +28,21 @@ public class Menu extends javax.swing.JFrame {
         this.setTitle("Sistema de venta");
         loadComboBoxVendedores();
     }
-    
+
+    // Cargamos la caja de vendedores a partir de los resultados de la base de datos.
     private void loadComboBoxVendedores() {
-        try{
+        try {
             Hirachy hierachy = new Hirachy();
             ResultSet vendedores = hierachy.getVendedores();
-            while(vendedores.next()) {
+            while (vendedores.next()) {
                 String nombre = vendedores.getString("nombre");
                 String apellido = vendedores.getString("apellido");
                 String dni = vendedores.getString("dni");
                 String legajo = vendedores.getString("legajo");
-                Vendedor vendedor = new Vendedor(nombre, apellido, dni, legajo);
-                BoxVendedor.addItem(vendedor.nombre);
+                Vendedor vendedor = new Vendedor(legajo, nombre, apellido, dni);
+                BoxVendedor.addItem(vendedor.getNombre() + " " + vendedor.getApellido() + " - " + vendedor.getLegajo());
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
@@ -169,9 +169,9 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void BoxVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxVendedorActionPerformed
-    // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_BoxVendedorActionPerformed
 
     private void BoxVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxVehiculoActionPerformed

@@ -9,8 +9,12 @@ import model.Hirachy;
  * @author mmazzucco
  */
 public class Main {
+
     public static void main(String[] args) {
+        // Creamos las tablas en la base de datos.
         Hirachy hierarchy = new Hirachy();
-        hierarchy.main(args);
+        hierarchy.createVehiculoTable();
+        hierarchy.createVendedorTable();        
+        hierarchy.createFacturaTable();
     }
 }
