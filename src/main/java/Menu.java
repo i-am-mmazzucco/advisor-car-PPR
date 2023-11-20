@@ -2,10 +2,10 @@
 import java.awt.Dimension;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import model.Hirachy;
 import persona.Vendedor;
+import vehiculo.VehiculoFactory;
+import vehiculo.VehiculoInterface;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -26,13 +26,14 @@ public class Menu extends javax.swing.JFrame {
         this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
         this.setTitle("Sistema de venta");
-        loadComboBoxVendedores();
+        Hirachy hierachy = new Hirachy();
+        loadComboBoxVendedores(hierachy);
+        loadComboBoxVehiculos(hierachy);
     }
 
     // Cargamos la caja de vendedores a partir de los resultados de la base de datos.
-    private void loadComboBoxVendedores() {
+    private void loadComboBoxVendedores(Hirachy hierachy) {
         try {
-            Hirachy hierachy = new Hirachy();
             ResultSet vendedores = hierachy.getVendedores();
             while (vendedores.next()) {
                 String nombre = vendedores.getString("nombre");
@@ -40,10 +41,24 @@ public class Menu extends javax.swing.JFrame {
                 String dni = vendedores.getString("dni");
                 String legajo = vendedores.getString("legajo");
                 Vendedor vendedor = new Vendedor(legajo, nombre, apellido, dni);
-                BoxVendedor.addItem(vendedor.getNombre() + " " + vendedor.getApellido() + " - " + vendedor.getLegajo());
+                BoxVendedores.addItem(vendedor.getNombre() + " " + vendedor.getApellido() + " - " + vendedor.getLegajo());
             }
         } catch (SQLException e) {
             System.out.println(e);
+        }
+    }
+
+    // Cargamos la caja de vehiculos a partir de los resultados de la base de datos.
+    private void loadComboBoxVehiculos(Hirachy hierachy) {
+        ResultSet vehiculos = hierachy.getVehiculos();
+        VehiculoFactory vehiculofactory = new VehiculoFactory();
+        try {
+            while (vehiculos.next()) {
+                VehiculoInterface vehiculo = vehiculofactory.createVehiculo(vehiculos);
+                BoxVehiculos.addItem(vehiculo.toStr());
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
         }
     }
 
@@ -58,11 +73,11 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        BoxVendedor = new javax.swing.JComboBox<>();
+        BoxVendedores = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        BoxVehiculo = new javax.swing.JComboBox<>();
         BtnVender = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        BoxVehiculos = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -75,20 +90,7 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel1.setText("Vendedor:");
 
-        BoxVendedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BoxVendedorActionPerformed(evt);
-            }
-        });
-
         jLabel3.setText("Seleccione el auto a vender");
-
-        BoxVehiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        BoxVehiculo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BoxVehiculoActionPerformed(evt);
-            }
-        });
 
         BtnVender.setText("Vender");
         BtnVender.addActionListener(new java.awt.event.ActionListener() {
@@ -130,22 +132,22 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(BoxVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BoxVendedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel2))
                 .addContainerGap(275, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(482, 482, 482)
+                .addComponent(BoxVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(432, 432, 432))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(BtnVender)
-                        .addGap(89, 89, 89))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(BoxVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(479, 479, 479))
+                        .addGap(89, 89, 89))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(430, 430, 430))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,12 +158,12 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(BoxVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(BoxVendedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(BoxVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BoxVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 462, Short.MAX_VALUE)
                 .addComponent(BtnVender)
                 .addGap(47, 47, 47))
@@ -169,14 +171,6 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BoxVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxVendedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BoxVendedorActionPerformed
-
-    private void BoxVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxVehiculoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BoxVehiculoActionPerformed
 
     private void BtnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVenderActionPerformed
         Cliente screenCliente = new Cliente();
@@ -197,16 +191,24 @@ public class Menu extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -220,8 +222,8 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> BoxVehiculo;
-    private javax.swing.JComboBox<String> BoxVendedor;
+    private javax.swing.JComboBox<String> BoxVehiculos;
+    private javax.swing.JComboBox<String> BoxVendedores;
     private javax.swing.JButton BtnVender;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -8,11 +8,17 @@ package vehiculo;
  *
  * @author juansa6201
  */
-public class Motocicleta implements Vehiculo {
+// Clase Motocicleta con atributos, setters, getters heredados y su constructor. Se implementa la interaz Vehiculo siguiendo el patron Factory.
+public class Motocicleta extends VehiculoClass implements VehiculoInterface {
+
+    public Motocicleta(String marca, String modelo, String año, String color, Integer chasis, String patente, Float precio) {
+        super(marca, modelo, año, color, chasis, patente, precio);
+    }
 
     @Override
-    public void acelerar() {
-        System.out.println("Acelerar la moto");
+    public String toStr() {
+        String concat = "Motocicleta: " + this.toString();
+        return concat;
     }
-    
+
 }

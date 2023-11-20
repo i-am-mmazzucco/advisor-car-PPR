@@ -8,6 +8,7 @@ package vehiculo;
  *
  * @author juansa6201
  */
-interface Vehiculo {
-    void acelerar();
+// Interfaz Vehiculo para seguir el patron Factory y simplificar la creacion de metodos.
+public interface VehiculoInterface {
+    String toStr();
 }

@@ -24,9 +24,14 @@ public class Hirachy {
             Statement stmt = conn.createStatement();
             stmt.execute("CREATE TABLE IF NOT EXISTS Vehiculo ("
                     + "idVehiculo INT, "
-                    + "marca VARCHAR(20), "
-                    + "modelo VARCHAR(20), "
-                    + "color VARCHAR(20), "
+                    + "tipoVehiculo ENUM('automovil', 'camioneta', 'motocicleta'), "
+                    + "marca VARCHAR(15), "
+                    + "modelo VARCHAR(15), "
+                    + "color VARCHAR(10), "
+                    + "año VARCHAR(10), "
+                    + "chasis INT, "
+                    + "patente VARCHAR(10), "
+                    + "precio FLOAT, "
                     + "PRIMARY KEY (idVehiculo))");
         } catch (SQLException e) {
             System.out.println(e);
@@ -39,10 +44,10 @@ public class Hirachy {
             Statement stmt = conn.createStatement();
             stmt.execute("CREATE TABLE IF NOT EXISTS Vendedor ("
                     + "idVendedor INT, "
-                    + "nombre VARCHAR(20), "
-                    + "apellido VARCHAR(20), "
-                    + "dni VARCHAR(20), "
-                    + "legajo VARCHAR(20), "
+                    + "nombre VARCHAR(15), "
+                    + "apellido VARCHAR(15), "
+                    + "dni VARCHAR(15), "
+                    + "legajo VARCHAR(15), "
                     + "PRIMARY KEY (idVendedor))");
         } catch (SQLException e) {
             System.out.println(e);
@@ -58,8 +63,8 @@ public class Hirachy {
                     + "fecha VARCHAR(20), "
                     + "idVendedor INT, "
                     + "idVehiculo INT, "
-                    + "nombreComprador VARCHAR(20), "
-                    + "apellidoComprador VARCHAR(20), "
+                    + "nombreComprador VARCHAR(15), "
+                    + "apellidoComprador VARCHAR(15), "
                     + "direccionComprador VARCHAR(60), "
                     + "cuitcuilComprador VARCHAR(20), "
                     + "montoVenta FLOAT, "
@@ -81,5 +86,17 @@ public class Hirachy {
             System.out.println(e);
         }
         return vendedores;
+    }
+
+    // Funcion para devolver todos los elementos de la tabla Vehiculo.
+    public ResultSet getVehiculos() {
+        ResultSet vehiculos = null;
+        try {
+            Statement stmt = conn.createStatement();
+            vehiculos = stmt.executeQuery("SELECT * FROM Vehiculo");
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return vehiculos;
     }
 }
