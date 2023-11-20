@@ -9,6 +9,12 @@ package persona;
  * @author juansa6201
  */
 public class Persona {
+
+    public Persona(String nombre, String apellido, String dni) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+    }
     public String nombre;
     public String apellido;
     public String dni; 
