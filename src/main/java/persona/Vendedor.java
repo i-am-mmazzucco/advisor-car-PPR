@@ -8,6 +8,22 @@ package persona;
  *
  * @author juansa6201
  */
+// Clase Vendedor con sus atributos, contructor, setters y getters.
 public class Vendedor extends Persona {
-    public String legajo;
+
+    private String legajo;
+
+    public Vendedor(String legajo, String nombre, String apellido, String dni) {
+        super(nombre, apellido, dni);
+        this.legajo = legajo;
+    }
+
+    public String getLegajo() {
+        return legajo;
+    }
+
+    public void setLegajo(String legajo) {
+        this.legajo = legajo;
+    }
+
 }

@@ -8,22 +8,21 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 /**
  *
  * @author mmazzucco
  */
 public class ModuleConnection {
 
-    // Ensure only one instance of Connection is created
+    // Nos aseguramos que solo una instancia es creada.
     private static Connection conn;
 
-    // Private constructor to prevent instantiation from outside
+    // Contructor privado para prevenir la instanciacion.
     private ModuleConnection() {
     }
 
     public static Connection getConnection() throws SQLException {
-        // Create the connection if it doesn't exist
+        // Metodo SINGLETONE para instanciar solo una conexion.
         if (conn == null || conn.isClosed()) {
             try {
                 String driver = "com.mysql.cj.jdbc.Driver";
@@ -37,9 +36,7 @@ public class ModuleConnection {
                 System.out.println("Connected");
             } catch (ClassNotFoundException | SQLException e) {
                 System.out.println("Error connecting to the database: " + e.getMessage());
-                // Log or rethrow exceptions as needed
-                // Logging.getLogger(ModuleConnection.class.getName()).log(Level.SEVERE, null, e);
-                // throw new SQLException("Error connecting to the database", e);
+                // Lanza SQLException() en el caso de que falle la conexion.
             }
         }
 
