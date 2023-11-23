@@ -13,8 +13,8 @@ public class Vendedor extends Persona {
 
     private String legajo;
 
-    public Vendedor(String legajo, String nombre, String apellido, String dni) {
-        super(nombre, apellido, dni);
+    public Vendedor(Integer id, String legajo, String nombre, String apellido, String dni) {
+        super(id, nombre, apellido, dni);
         this.legajo = legajo;
     }
 

@@ -11,4 +11,6 @@ package vehiculo;
 // Interfaz Vehiculo para seguir el patron Factory y simplificar la creacion de metodos.
 public interface VehiculoInterface {
     String toStr();
+    Float montoVenta();
+    Integer getId();
 }
