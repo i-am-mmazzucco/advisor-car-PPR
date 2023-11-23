@@ -9,13 +9,9 @@ package vehiculo;
  * @author juansa6201
  */
 // Clase Vehiculo con sus atributos, contructor, setters y getters.
-public class VehiculoClass {
+public abstract class VehiculoClass implements VehiculoInterface {
 
-    @Override
-    public String toString() {
-        return marca + " " + modelo + " " + año + " $" + precio;
-    }
-
+    private final Integer id;
     private String marca;
     private String modelo;
     private String año;
@@ -24,7 +20,8 @@ public class VehiculoClass {
     private String patente;
     private Float precio;
 
-    public VehiculoClass(String marca, String modelo, String año, String color, Integer chasis, String patente, Float precio) {
+    public VehiculoClass(Integer id, String marca, String modelo, String año, String color, Integer chasis, String patente, Float precio) {
+        this.id = id;
         this.marca = marca;
         this.modelo = modelo;
         this.año = año;
@@ -32,6 +29,16 @@ public class VehiculoClass {
         this.chasis = chasis;
         this.patente = patente;
         this.precio = precio;
+    }
+
+    @Override
+    public String toString() {
+        return marca + " " + modelo + " " + año + " $" + precio;
+    }
+
+    @Override
+    public Integer getId() {
+        return id;
     }
 
     public String getMarca() {

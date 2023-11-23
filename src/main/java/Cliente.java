@@ -1,15 +1,13 @@
 
 import java.awt.Dimension;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import model.Hirachy;
 import persona.Vendedor;
+import vehiculo.VehiculoInterface;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author juansa6201
@@ -19,6 +17,9 @@ public class Cliente extends javax.swing.JFrame {
     /**
      * Creates new form Cliente
      */
+    private Vendedor vendedor;
+    private VehiculoInterface vehiculo;
+
     public Cliente() {
         initComponents();
         this.setSize(new Dimension(1280, 720));
@@ -26,7 +27,11 @@ public class Cliente extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setTitle("Sistema de venta");
     }
-    
+
+    public void setDatos(Vendedor vendedor, VehiculoInterface vehiculo) {
+        this.vendedor = vendedor;
+        this.vehiculo = vehiculo;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -156,6 +161,16 @@ public class Cliente extends javax.swing.JFrame {
 
     private void btnAceptarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarClienteActionPerformed
         // TODO add your handling code here:
+        String fecha = "fecha de hoy";
+        Integer idVehiculo = vehiculo.getId();
+        Integer idVendedor = vendedor.getId();
+        String nombreCliente = txtNombreCliente.getText();
+        String apellidoCliente = txtApellidoCliente.getText();
+        String direccionCliente = txtDireccionCliente.getText();
+        String cuitCliente = txtCuitCuilCliente.getText();
+        Float montoVenta = vehiculo.montoVenta();
+        Hirachy hierachy = new Hirachy();
+        hierachy.postFacturas(fecha, idVendedor, idVehiculo, nombreCliente, apellidoCliente, direccionCliente, cuitCliente, montoVenta);
     }//GEN-LAST:event_btnAceptarClienteActionPerformed
 
     /**

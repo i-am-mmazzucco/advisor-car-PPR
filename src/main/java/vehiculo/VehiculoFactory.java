@@ -15,6 +15,7 @@ public class VehiculoFactory {
 
     public VehiculoInterface createVehiculo(ResultSet vehiculo) {
         try {
+            Integer id = vehiculo.getInt("idVehiculo");
             String tipo = vehiculo.getString("tipoVehiculo");
             String marca = vehiculo.getString("marca");
             String modelo = vehiculo.getString("modelo");
@@ -26,13 +27,13 @@ public class VehiculoFactory {
             if (null != tipo) {
                 switch (tipo) {
                     case "automovil" -> {
-                        return new Automovil(marca, modelo, año, color, chasis, patente, precio);
+                        return new Automovil(id, marca, modelo, año, color, chasis, patente, precio);
                     }
                     case "camioneta" -> {
-                        return new Camioneta(marca, modelo, año, color, chasis, patente, precio);
+                        return new Camioneta(id, marca, modelo, año, color, chasis, patente, precio);
                     }
                     case "motocicleta" -> {
-                        return new Motocicleta(marca, modelo, año, color, chasis, patente, precio);
+                        return new Motocicleta(id, marca, modelo, año, color, chasis, patente, precio);
                     }
                     default -> {
                         System.out.println("Tipo de vehiculo no reconocido.");

@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -59,14 +60,14 @@ public class Hirachy {
         try {
             Statement stmt = conn.createStatement();
             stmt.execute("CREATE TABLE IF NOT EXISTS Factura ("
-                    + "idFactura INT, "
+                    + "idFactura INT AUTO_INCREMENT, "
                     + "fecha VARCHAR(20), "
                     + "idVendedor INT, "
                     + "idVehiculo INT, "
-                    + "nombreComprador VARCHAR(15), "
-                    + "apellidoComprador VARCHAR(15), "
-                    + "direccionComprador VARCHAR(60), "
-                    + "cuitcuilComprador VARCHAR(20), "
+                    + "nombreCliente VARCHAR(15), "
+                    + "apellidoCliente VARCHAR(15), "
+                    + "direccionCliente VARCHAR(60), "
+                    + "cuitcuilCliente VARCHAR(20), "
                     + "montoVenta FLOAT, "
                     + "PRIMARY KEY (idFactura), "
                     + "FOREIGN KEY (idVendedor) REFERENCES Vendedor(idVendedor), "
@@ -98,5 +99,24 @@ public class Hirachy {
             System.out.println(e);
         }
         return vehiculos;
+    }
+    // Funcion para devolver todos los elementos de la tabla Vehiculo.
+
+    public void postFacturas(String fecha, Integer idVendedor, Integer idVehiculo, String nombreCliente, String apellidoCliente, String direccionCliente, String cuitcuilCliente, Float montoVenta) {
+        String query = "INSERT INTO Factura (fecha, idVendedor, idVehiculo, nombreCliente, apellidoCliente, direccionCliente, cuitcuilCliente, montoVenta)" + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement preparedstmt = conn.prepareStatement(query);
+            preparedstmt.setString(1, fecha);
+            preparedstmt.setInt(2, idVendedor);
+            preparedstmt.setInt(3, idVehiculo);
+            preparedstmt.setString(4, nombreCliente);
+            preparedstmt.setString(5, apellidoCliente);
+            preparedstmt.setString(6, direccionCliente);
+            preparedstmt.setString(7, cuitcuilCliente);
+            preparedstmt.setFloat(8, montoVenta);
+            preparedstmt.execute();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 }

@@ -11,14 +11,20 @@ package persona;
 // Clase Persona con sus atributos, contructor, setters y getters.
 public class Persona {
 
+    private final Integer id;
     private String nombre;
     private String apellido;
     private String dni;
 
-    public Persona(String nombre, String apellido, String dni) {
+    public Persona(Integer id, String nombre, String apellido, String dni) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getNombre() {
