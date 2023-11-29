@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Random;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +25,7 @@ public class Hirachy {
         try {
             Statement stmt = conn.createStatement();
             stmt.execute("CREATE TABLE IF NOT EXISTS Vehiculo ("
-                    + "idVehiculo INT, "
+                    + "idVehiculo INT AUTO_INCREMENT, "
                     + "tipoVehiculo ENUM('automovil', 'camioneta', 'motocicleta'), "
                     + "marca VARCHAR(15), "
                     + "modelo VARCHAR(15), "
@@ -33,6 +34,8 @@ public class Hirachy {
                     + "chasis INT, "
                     + "patente VARCHAR(10), "
                     + "precio FLOAT, "
+                    + "imagen VARCHAR(255), "
+                    + "url VARCHAR(255), "
                     + "PRIMARY KEY (idVehiculo))");
         } catch (SQLException e) {
             System.out.println(e);
@@ -44,7 +47,7 @@ public class Hirachy {
         try {
             Statement stmt = conn.createStatement();
             stmt.execute("CREATE TABLE IF NOT EXISTS Vendedor ("
-                    + "idVendedor INT, "
+                    + "idVendedor INT AUTO_INCREMENT, "
                     + "nombre VARCHAR(15), "
                     + "apellido VARCHAR(15), "
                     + "dni VARCHAR(15), "
@@ -117,6 +120,73 @@ public class Hirachy {
             preparedstmt.execute();
         } catch (SQLException e) {
             System.out.println(e);
+        }
+    }
+    
+    public void insertFakeVehiculos() {
+    try {
+        String query = "INSERT INTO Vehiculo (tipoVehiculo, marca, modelo, color, año, chasis, patente, precio, imagen, url) " +
+                       "SELECT 'automovil', 'Toyota', 'Corolla', 'Azul', '2022', " +
+                       (new Random().nextInt(1000000) + 100000) + ", 'ABC123', " +
+                       (new Random().nextFloat() * 50000 + 10000) + ", 'imagen0.jpg', 'https://www.autopista.es/uploads/s1/47/85/40/9/5be953b60de69440393494a0-toyota-corolla-sedan-2019-asi-es-la-3a-carroceria-del-nuevo-compacto.jpeg' FROM DUAL " +
+                       "UNION ALL SELECT 'camioneta', 'Ford', 'Explorer', 'Negro', '2021', " +
+                       (new Random().nextInt(1000000) + 100000) + ", 'XYZ789', " +
+                       (new Random().nextFloat() * 50000 + 10000) + ", 'imagen1.jpg', 'https://vehicle-images.dealerinspire.com/stock-images/chrome/45ec39af3ee794371d7c9c21112a4668.png' FROM DUAL " +
+                       "UNION ALL SELECT 'motocicleta', 'Honda', 'CBR600RR', 'Rojo', '2020', " +
+                       (new Random().nextInt(1000000) + 100000) + ", 'DEF456', " +
+                       (new Random().nextFloat() * 50000 + 10000) + ", 'imagen2.jpg', 'https://pueyrredonmotos.com/wp-content/uploads/2018/01/cbr600.jpg' FROM DUAL " +
+                       "UNION ALL SELECT 'automovil', 'Chevrolet', 'Cruze', 'Blanco', '2023', " +
+                       (new Random().nextInt(1000000) + 100000) + ", 'GHI789', " +
+                       (new Random().nextFloat() * 50000 + 10000) + ", 'imagen3.jpg', 'https://www.chevrolet.com.ar/content/dam/chevrolet/mercosur/argentina/espanol/index/cars/2019-cruze-premier/colorizer/enero-21/colorizer-branco-summit.jpg?imwidth=960' FROM DUAL " +
+                       "UNION ALL SELECT 'camioneta', 'BMW', 'X5', 'Gris', '2022', " +
+                       (new Random().nextInt(1000000) + 100000) + ", 'JKL012', " +
+                       (new Random().nextFloat() * 50000 + 10000) + ", 'imagen4.jpg', 'https://prod-01-loadandpay-media.s3.eu-west-1.amazonaws.com/medias/cache/app_auction_slides_thumb/628137176043d436127894.jpg' FROM DUAL " +
+                       "UNION ALL SELECT 'motocicleta', 'Suzuki', 'GSX-R1000', 'Negro', '2021', " +
+                       (new Random().nextInt(1000000) + 100000) + ", 'MNO345', " +
+                       (new Random().nextFloat() * 50000 + 10000) + ", 'imagen5.jpg', 'https://img.remediosdigitales.com/09f956/suzuki-gsx-r-1000-phantom-2022-013/1366_2000.jpeg' FROM DUAL " +
+                       "UNION ALL SELECT 'automovil', 'Audi', 'A4', 'Plateado', '2023', " +
+                       (new Random().nextInt(1000000) + 100000) + ", 'PQR678', " +
+                       (new Random().nextFloat() * 50000 + 10000) + ", 'imagen6.jpg', 'https://acroadtrip.blob.core.windows.net/publicaciones-imagenes/Large/audi/a4/ar/RT_PU_5f1fa2bff3f7434a9b52cca3e8ef3546.webp' FROM DUAL " +
+                       "UNION ALL SELECT 'camioneta', 'Mercedes-Benz', 'GLC', 'Azul', '2022', " +
+                       (new Random().nextInt(1000000) + 100000) + ", 'STU901', " +
+                       (new Random().nextFloat() * 50000 + 10000) + ", 'imagen7.jpg', 'https://live.staticflickr.com/4534/37549041745_ceab0d4eca_b.jpg' FROM DUAL " +
+                       "UNION ALL SELECT 'motocicleta', 'Kawasaki', 'Ninja ZX-10R', 'Verde', '2021', " +
+                       (new Random().nextInt(1000000) + 100000) + ", 'VWX234', " +
+                       (new Random().nextFloat() * 50000 + 10000) + ", 'imagen8.jpg', 'https://lamoto.com.ar/wp-content/uploads/2023/02/Kawasaki-Ninja-ZX-10RR-2023-ambiente.jpg' FROM DUAL " +
+                       "UNION ALL SELECT 'automovil', 'Tesla', 'Model 3', 'Negro', '2023', " +
+                       (new Random().nextInt(1000000) + 100000) + ", 'YZA567', " +
+                       (new Random().nextFloat() * 50000 + 10000) + ", 'imagen9.jpg', 'https://www.autonocion.com/wp-content/uploads/2018/04/Tesla-Model-3-T-Sportsline-3.jpg' FROM DUAL";
+
+        PreparedStatement preparedstmt = conn.prepareStatement(query);
+        preparedstmt.execute();
+    } catch (SQLException e) {
+        System.out.println("Error al insertar vehículos: " + e.getMessage());
+    }
+}
+    // Función para agregar vendedores a la tabla Vendedor.
+    public void insertFakeVendedores() {
+        String[] nombres = {"Juan", "Maria", "Pedro", "Luis", "Ana"};
+        String[] apellidos = {"Perez", "Gomez", "Fernandez", "Lopez", "Rodriguez"};
+        Random rand = new Random();
+
+        for (int i = 0; i < 5; i++) {
+            String nombre = nombres[rand.nextInt(nombres.length)];
+            String apellido = apellidos[rand.nextInt(apellidos.length)];
+            String dni = String.valueOf(rand.nextInt(90000000) + 10000000);
+            String legajo = "L" + rand.nextInt(1000);
+
+            try {
+                String query = "INSERT INTO Vendedor (nombre, apellido, dni, legajo) " +
+                               "VALUES (?, ?, ?, ?)";
+                PreparedStatement preparedstmt = conn.prepareStatement(query);
+                preparedstmt.setString(1, nombre);
+                preparedstmt.setString(2, apellido);
+                preparedstmt.setString(3, dni);
+                preparedstmt.setString(4, legajo);
+                preparedstmt.execute();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
     }
 }

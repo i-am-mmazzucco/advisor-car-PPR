@@ -14,7 +14,9 @@ public class Main {
         // Creamos las tablas en la base de datos.
         Hirachy hierarchy = new Hirachy();
         hierarchy.createVehiculoTable();
-        hierarchy.createVendedorTable();        
+        hierarchy.insertFakeVehiculos();
+        hierarchy.createVendedorTable();
+        hierarchy.insertFakeVendedores();
         hierarchy.createFacturaTable();
     }
 }
