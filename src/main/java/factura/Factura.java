@@ -10,9 +10,11 @@ public class Factura {
     private String apellidoCliente;
     private String direccionCliente;
     private String cuitcuilCliente;
+    private String dniCliente;
+
     private Float montoVenta;
 
-    public Factura(Integer idFactura, String fecha, Integer idVehiculo, Integer idVendedor, String nombreCliente, String apellidoCliente, String direccionCliente, String cuitcuilCliente, Float montoVenta) {
+    public Factura(Integer idFactura, String fecha, Integer idVehiculo, Integer idVendedor, String nombreCliente, String apellidoCliente, String direccionCliente, String cuitcuilCliente, String dniCliente, Float montoVenta) {
         this.idFactura = idFactura;
         this.fecha = fecha;
         this.idVehiculo = idVehiculo;
@@ -21,6 +23,7 @@ public class Factura {
         this.apellidoCliente = apellidoCliente;
         this.direccionCliente = direccionCliente;
         this.cuitcuilCliente = cuitcuilCliente;
+        this.dniCliente = dniCliente;
         this.montoVenta = montoVenta;
     }
 
@@ -94,6 +97,14 @@ public class Factura {
 
     public void setMontoVenta(Float montoVenta) {
         this.montoVenta = montoVenta;
+    }
+
+    public String getDniCliente() {
+        return dniCliente;
+    }
+
+    public void setDniCliente(String dniCliente) {
+        this.dniCliente = dniCliente;
     }
 
 }

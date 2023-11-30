@@ -27,7 +27,7 @@ public class Venta extends javax.swing.JFrame {
         this.setSize(new Dimension(1280, 720));
         this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
-        this.setTitle("Sistema de venta");
+        this.setTitle("Ventas");
         Hirachy hierachy = new Hirachy();
         loadVendedores(hierachy);
         loadVehiculos(hierachy);
@@ -100,6 +100,7 @@ public class Venta extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         BoxVehiculos = new javax.swing.JComboBox<>();
         imgLabel = new javax.swing.JLabel();
+        btnAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,6 +143,13 @@ public class Venta extends javax.swing.JFrame {
 
         imgLabel.setText("jLabel4");
 
+        btnAtras.setText("Menu");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,7 +174,9 @@ public class Venta extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(264, 264, 264))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(52, 52, 52)
+                .addComponent(btnAtras)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(imgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(390, 390, 390))
         );
@@ -184,8 +194,13 @@ public class Venta extends javax.swing.JFrame {
                             .addComponent(BoxVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BtnVender)))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(104, 104, 104)
-                .addComponent(imgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(imgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(291, 291, 291)
+                        .addComponent(btnAtras)))
                 .addContainerGap(227, Short.MAX_VALUE))
         );
 
@@ -193,13 +208,13 @@ public class Venta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVenderActionPerformed
-        Cliente screenCliente = new Cliente();
+
         Integer selectedVehiculo = BoxVehiculos.getSelectedIndex();
         Integer selectedVendedor = BoxVendedores.getSelectedIndex();
         Vendedor vendedor = this.listaVendedores.get(selectedVendedor);
         VehiculoInterface vehiculo = this.listaVehiculos.get(selectedVehiculo);
-        screenCliente.setDatos(vendedor, vehiculo);
-        screenCliente.setVisible(true);      // TODO add your handling code here:
+        ClienteForm screenCliente = new ClienteForm(vendedor, vehiculo);
+        screenCliente.setVisible(true);
     }//GEN-LAST:event_BtnVenderActionPerformed
 
     // Mostramos la imagen del vehiculo seleccionado.
@@ -226,6 +241,11 @@ public class Venta extends javax.swing.JFrame {
     private void BoxVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxVendedoresActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BoxVendedoresActionPerformed
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        Menu screenMenu = new Menu();
+        screenMenu.setVisible(true);
+    }//GEN-LAST:event_btnAtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,7 +288,6 @@ public class Venta extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Venta().setVisible(true);
 
             }
         });
@@ -278,6 +297,7 @@ public class Venta extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> BoxVehiculos;
     private javax.swing.JComboBox<String> BoxVendedores;
     private javax.swing.JButton BtnVender;
+    private javax.swing.JButton btnAtras;
     private javax.swing.JLabel imgLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

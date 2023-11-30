@@ -32,4 +32,10 @@ public class Camioneta extends VehiculoClass {
     public String getUrlImg() {
         return this.getUrl();
     }
+
+    @Override
+    public String facturaStr() {
+        String concat = "Camioneta: " + this.getMarca() + " " + this.getModelo() + " - " + this.getAño();
+        return concat;
+    }
 }

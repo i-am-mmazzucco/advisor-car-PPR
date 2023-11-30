@@ -15,6 +15,7 @@ public class Automovil extends VehiculoClass {
         super(id, marca, modelo, año, color, chasis, patente, precio, url);
     }
 // Sobreescribimos los metodos de la interfaz para que se adapten a la clase Automovil.
+
     @Override
     public String toStr() {
         String concat = "Automovil: " + this.toString();
@@ -26,9 +27,15 @@ public class Automovil extends VehiculoClass {
         Float monto = 100 + this.getPrecio();
         return monto;
     }
-    
+
     @Override
     public String getUrlImg() {
         return this.getUrl();
+    }
+
+    @Override
+    public String facturaStr() {
+        String concat = "Automovil: " + this.getMarca() + " " + this.getModelo() + " - " + this.getAño();
+        return concat;
     }
 }

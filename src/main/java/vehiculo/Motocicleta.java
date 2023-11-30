@@ -32,4 +32,10 @@ public class Motocicleta extends VehiculoClass {
     public String getUrlImg() {
         return this.getUrl();
     }
+
+    @Override
+    public String facturaStr() {
+        String concat = "Motocicleta: " + this.getMarca() + " " + this.getModelo() + " - " + this.getAño();
+        return concat;
+    }
 }
