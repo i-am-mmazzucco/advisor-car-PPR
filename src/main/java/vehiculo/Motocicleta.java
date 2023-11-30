@@ -11,8 +11,8 @@ package vehiculo;
 // Clase Motocicleta con atributos, setters, getters heredados y su constructor. Se implementa la interaz Vehiculo siguiendo el patron Factory.
 public class Motocicleta extends VehiculoClass {
 
-    public Motocicleta(Integer id, String marca, String modelo, String año, String color, Integer chasis, String patente, Float precio) {
-        super(id, marca, modelo, año, color, chasis, patente, precio);
+    public Motocicleta(Integer id, String marca, String modelo, String año, String color, Integer chasis, String patente, Float precio, String url) {
+        super(id, marca, modelo, año, color, chasis, patente, precio, url);
     }
 
     @Override
@@ -26,5 +26,10 @@ public class Motocicleta extends VehiculoClass {
     public Float montoVenta() {
         Float monto = 50 + this.getPrecio();
         return monto;
+    }
+
+    @Override
+    public String getUrlImg() {
+        return this.getUrl();
     }
 }

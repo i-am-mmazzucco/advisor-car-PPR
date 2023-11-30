@@ -13,4 +13,5 @@ public interface VehiculoInterface {
     String toStr();
     Float montoVenta();
     Integer getId();
+    String getUrlImg();
 }

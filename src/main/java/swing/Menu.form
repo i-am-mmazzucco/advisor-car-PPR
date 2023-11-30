@@ -26,19 +26,19 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="390" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
+                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Component id="btnVenta" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="360" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnFactura" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnHistorial" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="402" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnFactura" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnHistorial" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="393" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -51,11 +51,11 @@
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
               <Component id="btnVenta" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
               <Component id="btnHistorial" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
               <Component id="btnFactura" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="333" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="274" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

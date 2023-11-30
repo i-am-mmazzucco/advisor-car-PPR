@@ -1,4 +1,4 @@
-package model;
+package database;
 
 import java.util.Random;
 import java.sql.Connection;

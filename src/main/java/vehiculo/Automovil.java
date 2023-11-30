@@ -11,8 +11,8 @@ package vehiculo;
 // Clase Automovil con atributos, setters, getters heredados y su constructor. Se implementa la interaz Vehiculo siguiendo el patron Factory.
 public class Automovil extends VehiculoClass {
 
-    public Automovil(Integer id, String marca, String modelo, String año, String color, Integer chasis, String patente, Float precio) {
-        super(id, marca, modelo, año, color, chasis, patente, precio);
+    public Automovil(Integer id, String marca, String modelo, String año, String color, Integer chasis, String patente, Float precio, String url) {
+        super(id, marca, modelo, año, color, chasis, patente, precio, url);
     }
 // Sobreescribimos los metodos de la interfaz para que se adapten a la clase Automovil.
     @Override
@@ -26,5 +26,9 @@ public class Automovil extends VehiculoClass {
         Float monto = 100 + this.getPrecio();
         return monto;
     }
-
+    
+    @Override
+    public String getUrlImg() {
+        return this.getUrl();
+    }
 }

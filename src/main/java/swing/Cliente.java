@@ -1,6 +1,8 @@
+package swing;
+
 
 import java.awt.Dimension;
-import model.Hirachy;
+import database.Hirachy;
 import persona.Vendedor;
 import vehiculo.VehiculoInterface;
 
