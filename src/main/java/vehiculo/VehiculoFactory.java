@@ -24,16 +24,17 @@ public class VehiculoFactory {
             Integer chasis = vehiculo.getInt("chasis");
             String patente = vehiculo.getString("patente");
             Float precio = vehiculo.getFloat("precio");
+            String url = vehiculo.getString("url");
             if (null != tipo) {
                 switch (tipo) {
                     case "automovil" -> {
-                        return new Automovil(id, marca, modelo, año, color, chasis, patente, precio);
+                        return new Automovil(id, marca, modelo, año, color, chasis, patente, precio, url);
                     }
                     case "camioneta" -> {
-                        return new Camioneta(id, marca, modelo, año, color, chasis, patente, precio);
+                        return new Camioneta(id, marca, modelo, año, color, chasis, patente, precio, url);
                     }
                     case "motocicleta" -> {
-                        return new Motocicleta(id, marca, modelo, año, color, chasis, patente, precio);
+                        return new Motocicleta(id, marca, modelo, año, color, chasis, patente, precio, url);
                     }
                     default -> {
                         System.out.println("Tipo de vehiculo no reconocido.");

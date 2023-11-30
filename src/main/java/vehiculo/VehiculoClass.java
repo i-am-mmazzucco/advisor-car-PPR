@@ -19,8 +19,9 @@ public abstract class VehiculoClass implements VehiculoInterface {
     private Integer chasis;
     private String patente;
     private Float precio;
+    private String url;
 
-    public VehiculoClass(Integer id, String marca, String modelo, String año, String color, Integer chasis, String patente, Float precio) {
+    public VehiculoClass(Integer id, String marca, String modelo, String año, String color, Integer chasis, String patente, Float precio, String url) {
         this.id = id;
         this.marca = marca;
         this.modelo = modelo;
@@ -29,6 +30,7 @@ public abstract class VehiculoClass implements VehiculoInterface {
         this.chasis = chasis;
         this.patente = patente;
         this.precio = precio;
+        this.url = url;
     }
 
     @Override
@@ -96,5 +98,15 @@ public abstract class VehiculoClass implements VehiculoInterface {
     public void setPrecio(Float precio) {
         this.precio = precio;
     }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+    
+    
 
 }

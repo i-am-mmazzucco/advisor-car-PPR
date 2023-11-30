@@ -1,3 +1,5 @@
+package swing;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -44,37 +46,42 @@ public class Menu extends javax.swing.JFrame {
         btnHistorial.setText("HISTORIAL");
 
         btnFactura.setText("FACTURAS");
+        btnFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFacturaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(390, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2)
-                        .addGap(383, 383, 383))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnVenta)
-                        .addGap(360, 360, 360))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnVenta)
+                            .addGap(360, 360, 360)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnFactura)
                             .addComponent(btnHistorial))
-                        .addGap(402, 402, 402))))
+                        .addGap(393, 393, 393))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(69, 69, 69)
+                .addGap(63, 63, 63)
                 .addComponent(btnVenta)
-                .addGap(41, 41, 41)
+                .addGap(75, 75, 75)
                 .addComponent(btnHistorial)
-                .addGap(47, 47, 47)
+                .addGap(72, 72, 72)
                 .addComponent(btnFactura)
-                .addGap(0, 333, Short.MAX_VALUE))
+                .addGap(0, 274, Short.MAX_VALUE))
         );
 
         pack();
@@ -84,6 +91,10 @@ public class Menu extends javax.swing.JFrame {
         Venta screenVenta = new Venta();
         screenVenta.setVisible(true);          // TODO add your handling code here:
     }//GEN-LAST:event_btnVentaActionPerformed
+
+    private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFacturaActionPerformed
 
     /**
      * @param args the command line arguments

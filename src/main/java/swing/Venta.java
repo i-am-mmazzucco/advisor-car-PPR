@@ -1,27 +1,24 @@
+package swing;
 
 import java.awt.Dimension;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.Hirachy;
+import database.Hirachy;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 import persona.Vendedor;
 import vehiculo.VehiculoFactory;
 import vehiculo.VehiculoInterface;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-/**
- *
- * @author juansa6201
- */
 public class Venta extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Menu
-     */
     List<VehiculoInterface> listaVehiculos = new ArrayList();
     List<Vendedor> listaVendedores = new ArrayList();
 
@@ -102,6 +99,7 @@ public class Venta extends javax.swing.JFrame {
         BtnVender = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         BoxVehiculos = new javax.swing.JComboBox<>();
+        imgLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,7 +108,13 @@ public class Venta extends javax.swing.JFrame {
 
         jLabel1.setText("Vendedor:");
 
-        jLabel3.setText("Seleccione el auto a vender");
+        BoxVendedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BoxVendedoresActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Seleccione el auto a vender:");
 
         BtnVender.setText("Vender");
         BtnVender.addActionListener(new java.awt.event.ActionListener() {
@@ -136,33 +140,35 @@ public class Venta extends javax.swing.JFrame {
             }
         });
 
+        imgLabel.setText("jLabel4");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(165, 165, 165)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
                         .addComponent(jLabel1)
+                        .addGap(27, 27, 27)
+                        .addComponent(BoxVendedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(BoxVendedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2))
-                .addContainerGap(275, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(482, 482, 482)
-                .addComponent(BoxVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(BoxVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 409, Short.MAX_VALUE)
+                        .addComponent(BtnVender)
+                        .addGap(131, 131, 131))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(264, 264, 264))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(BtnVender)
-                        .addGap(89, 89, 89))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(430, 430, 430))))
+                .addComponent(imgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(390, 390, 390))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,15 +179,14 @@ public class Venta extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(BoxVendedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(BoxVendedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(BoxVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnVender)))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(BoxVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 487, Short.MAX_VALUE)
-                .addComponent(BtnVender)
-                .addGap(47, 47, 47))
+                .addGap(104, 104, 104)
+                .addComponent(imgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(227, Short.MAX_VALUE))
         );
 
         pack();
@@ -197,9 +202,30 @@ public class Venta extends javax.swing.JFrame {
         screenCliente.setVisible(true);      // TODO add your handling code here:
     }//GEN-LAST:event_BtnVenderActionPerformed
 
+    // Mostramos la imagen del vehiculo seleccionado.
     private void BoxVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxVehiculosActionPerformed
-        // TODO add your handling code here:
+        int selectedIndex = BoxVehiculos.getSelectedIndex();
+        if (selectedIndex >= 0) {
+            VehiculoInterface vehiculoSeleccionado = listaVehiculos.get(selectedIndex);
+            String urlImagen = vehiculoSeleccionado.getUrlImg();
+
+            // Cargar la imagen en un hilo separado para mejorar rendimiento.
+            new Thread(() -> {
+                try {
+                    BufferedImage img = ImageIO.read(new URL(urlImagen));
+                    ImageIcon icon = new ImageIcon(img.getScaledInstance(imgLabel.getWidth(), imgLabel.getHeight(), Image.SCALE_SMOOTH));
+                    SwingUtilities.invokeLater(() -> imgLabel.setIcon(icon));
+                } catch (IOException e) {
+                    System.out.println(e);
+                }
+            }).start();
+        }
+// TODO add your handling code here:
     }//GEN-LAST:event_BoxVehiculosActionPerformed
+
+    private void BoxVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxVendedoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BoxVendedoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,6 +278,7 @@ public class Venta extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> BoxVehiculos;
     private javax.swing.JComboBox<String> BoxVendedores;
     private javax.swing.JButton BtnVender;
+    private javax.swing.JLabel imgLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

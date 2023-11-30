@@ -11,8 +11,8 @@ package vehiculo;
 // Clase Camioneta con sus atributos y constructor. Los setters y getters son heredados. Se implementa la interaz Vehiculo siguiendo el patron Factory.
 public class Camioneta extends VehiculoClass {
 
-    public Camioneta(Integer id, String marca, String modelo, String año, String color, Integer chasis, String patente, Float precio) {
-        super(id, marca, modelo, año, color, chasis, patente, precio);
+    public Camioneta(Integer id, String marca, String modelo, String año, String color, Integer chasis, String patente, Float precio, String url) {
+        super(id, marca, modelo, año, color, chasis, patente, precio, url);
     }
 
     @Override
@@ -26,5 +26,10 @@ public class Camioneta extends VehiculoClass {
     public Float montoVenta() {
         Float monto = 200 + this.getPrecio();
         return monto;
+    }
+
+    @Override
+    public String getUrlImg() {
+        return this.getUrl();
     }
 }
