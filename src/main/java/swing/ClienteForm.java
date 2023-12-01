@@ -52,7 +52,7 @@ public class ClienteForm extends javax.swing.JFrame {
         btnMenu = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtDniCliente = new javax.swing.JTextField();
-        btnAceptarCliente1 = new javax.swing.JButton();
+        btnAceptarCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,10 +94,10 @@ public class ClienteForm extends javax.swing.JFrame {
 
         jLabel6.setText("Dni:");
 
-        btnAceptarCliente1.setText("Aceptar");
-        btnAceptarCliente1.addActionListener(new java.awt.event.ActionListener() {
+        btnAceptarCliente.setText("Aceptar");
+        btnAceptarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarCliente1ActionPerformed(evt);
+                btnAceptarClienteActionPerformed(evt);
             }
         });
 
@@ -137,7 +137,7 @@ public class ClienteForm extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(705, Short.MAX_VALUE)
-                    .addComponent(btnAceptarCliente1)
+                    .addComponent(btnAceptarCliente)
                     .addGap(167, 167, 167)))
         );
         layout.setVerticalGroup(
@@ -171,7 +171,7 @@ public class ClienteForm extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(532, Short.MAX_VALUE)
-                    .addComponent(btnAceptarCliente1)
+                    .addComponent(btnAceptarCliente)
                     .addGap(66, 66, 66)))
         );
 
@@ -195,9 +195,20 @@ public class ClienteForm extends javax.swing.JFrame {
         screenMenu.setVisible(true);
     }//GEN-LAST:event_btnMenuActionPerformed
 
-    private void btnAceptarCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarCliente1ActionPerformed
+    private void btnAceptarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarClienteActionPerformed
+        String fecha = "fecha de hoy";
+        Integer idVehiculo = vehiculo.getId();
+        Integer idVendedor = vendedor.getId();
+        String nombreCliente = txtNombreCliente.getText();
+        String apellidoCliente = txtApellidoCliente.getText();
+        String direccionCliente = txtDireccionCliente.getText();
+        String cuitCliente = txtCuitCuilCliente.getText();
+        String dniCliente = txtDniCliente.getText();
+        Float montoVenta = vehiculo.montoVenta();
+        Hirachy hierachy = new Hirachy();
+        hierachy.postFacturas(fecha, idVendedor, idVehiculo, nombreCliente, apellidoCliente, direccionCliente, cuitCliente, dniCliente, montoVenta);
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAceptarCliente1ActionPerformed
+    }//GEN-LAST:event_btnAceptarClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,7 +246,7 @@ public class ClienteForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAceptarCliente1;
+    private javax.swing.JButton btnAceptarCliente;
     private javax.swing.JButton btnMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
