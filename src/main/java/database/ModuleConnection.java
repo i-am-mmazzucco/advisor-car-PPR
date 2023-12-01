@@ -26,7 +26,7 @@ public class ModuleConnection {
         if (conn == null || conn.isClosed()) {
             try {
                 String driver = "com.mysql.cj.jdbc.Driver";
-                String url = "jdbc:mysql://localhost:3306/sys";
+                String url = "jdbc:mysql://localhost:3306/advisor-car";
                 String username = "root";
                 String password = "root";
 

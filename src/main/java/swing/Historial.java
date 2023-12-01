@@ -93,12 +93,20 @@ public class Historial extends javax.swing.JFrame {
 
     private void loadFirstImg() {
         try {
-            String urlImagen = this.listaVehiculosVendidos.getFirst().getUrlImg();
-            BufferedImage img = ImageIO.read(new URL(urlImagen));
-            ImageIcon icon = new ImageIcon(img.getScaledInstance(imgLabel.getWidth(), imgLabel.getHeight(), Image.SCALE_SMOOTH));
-            SwingUtilities.invokeLater(() -> imgLabel.setIcon(icon));
+            if (!this.listaVehiculosVendidos.isEmpty()) {
+                String urlImagen = this.listaVehiculosVendidos.getFirst().getUrlImg();
+                BufferedImage img = ImageIO.read(new URL(urlImagen));
+                ImageIcon icon = new ImageIcon(img.getScaledInstance(imgLabel.getWidth(), imgLabel.getHeight(), Image.SCALE_SMOOTH));
+                SwingUtilities.invokeLater(() -> imgLabel.setIcon(icon));
+            } else {
+                // Handle the case when the list is empty
+                System.out.println("The list of sold vehicles is empty.");
+                // You can choose to set a default image or display a message to the user.
+                // For example: imgLabel.setIcon(new ImageIcon("default_image.png"));
+            }
         } catch (IOException e) {
-            System.out.println(e);
+            // Handle IOException
+            System.out.println("Error loading image: " + e.getMessage());
         }
     }
 
