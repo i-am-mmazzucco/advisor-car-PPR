@@ -42,6 +42,7 @@ public class Historial extends javax.swing.JFrame {
         loadFacturas(hierachy);
         loadSoldVehicle(hierachy);
         loadSoldVehicleList();
+        loadFirstImg();
     }
 
     private void loadFacturas(Hirachy hierachy) {
@@ -87,6 +88,17 @@ public class Historial extends javax.swing.JFrame {
         for (VehiculoInterface vehiculo : this.listaVehiculosVendidos) {
             lstVehiculos.add(vehiculo.toStr());
 
+        }
+    }
+
+    private void loadFirstImg() {
+        try {
+            String urlImagen = this.listaVehiculosVendidos.getFirst().getUrlImg();
+            BufferedImage img = ImageIO.read(new URL(urlImagen));
+            ImageIcon icon = new ImageIcon(img.getScaledInstance(imgLabel.getWidth(), imgLabel.getHeight(), Image.SCALE_SMOOTH));
+            SwingUtilities.invokeLater(() -> imgLabel.setIcon(icon));
+        } catch (IOException e) {
+            System.out.println(e);
         }
     }
 
