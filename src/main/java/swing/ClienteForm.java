@@ -2,6 +2,8 @@ package swing;
 
 import java.awt.Dimension;
 import database.Hirachy;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import persona.Vendedor;
 import vehiculo.VehiculoInterface;
 
@@ -196,7 +198,9 @@ public class ClienteForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnAceptarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarClienteActionPerformed
-        String fecha = "fecha de hoy";
+        DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String fecha = date.format(now);
         Integer idVehiculo = vehiculo.getId();
         Integer idVendedor = vendedor.getId();
         String nombreCliente = txtNombreCliente.getText();
@@ -207,7 +211,9 @@ public class ClienteForm extends javax.swing.JFrame {
         Float montoVenta = vehiculo.montoVenta();
         Hirachy hierachy = new Hirachy();
         hierachy.postFacturas(fecha, idVendedor, idVehiculo, nombreCliente, apellidoCliente, direccionCliente, cuitCliente, dniCliente, montoVenta);
-        // TODO add your handling code here:
+        Menu screenMenu = new Menu();
+        screenMenu.setVisible(true);
+// TODO add your handling code here:
     }//GEN-LAST:event_btnAceptarClienteActionPerformed
 
     /**
