@@ -17,10 +17,12 @@ public class Vendedor extends Persona {
         super(id, nombre, apellido, dni);
         this.legajo = legajo;
     }
-public String facturaStr(){
-    String concat = this.getNombre() + " " + this.getApellido() + " - Legajo: " + this.getLegajo();
-    return concat;
-}
+
+    public String facturaStr() {
+        String concat = this.getNombre() + " " + this.getApellido() + " - Legajo: " + this.getLegajo();
+        return concat;
+    }
+
     public String getLegajo() {
         return legajo;
     }
