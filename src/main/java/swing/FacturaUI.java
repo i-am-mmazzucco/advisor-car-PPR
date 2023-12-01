@@ -30,8 +30,7 @@ public class FacturaUI extends javax.swing.JFrame {
      */
     public FacturaUI(VehiculoInterface vehiculo, Factura factura) {
         initComponents();
-        this.setSize(new Dimension(1280, 720));
-        this.setExtendedState(this.MAXIMIZED_BOTH);
+        this.setSize(1280, 720);
         this.setLocationRelativeTo(null);
         this.setTitle("Factura");
         this.vehiculo = vehiculo;
@@ -128,7 +127,7 @@ public class FacturaUI extends javax.swing.JFrame {
 
         jLabel10.setText("Direccion:");
 
-        jLabel11.setText("Dni:");
+        jLabel11.setText("DNI:");
 
         jLabel12.setText("Monto:");
 
@@ -161,55 +160,46 @@ public class FacturaUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(283, 283, 283))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(218, 218, 218)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(478, 478, 478)
+                .addComponent(jLabel2)
+                .addContainerGap(566, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(120, 120, 120)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(266, 266, 266))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addGap(330, 330, 330)))
+                    .addComponent(jButton1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCluitCliente)
-                            .addComponent(lblNombreCliente)
-                            .addComponent(lblDniCliente)
-                            .addComponent(lblMontoVenta)
-                            .addComponent(lblDireccionCliente)
-                            .addComponent(lblVehiculo)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel12))
+                        .addGap(66, 66, 66)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblVendedor)
                             .addComponent(lblFecha)
-                            .addComponent(lblApellidoCliente))
-                        .addGap(442, 442, 442))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblVehiculo)
+                            .addComponent(lblNombreCliente)
+                            .addComponent(lblApellidoCliente)
+                            .addComponent(lblDireccionCliente)
+                            .addComponent(lblCluitCliente)
+                            .addComponent(lblDniCliente)
+                            .addComponent(lblMontoVenta))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(lblFecha))
@@ -221,9 +211,9 @@ public class FacturaUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(lblVehiculo))
-                .addGap(17, 17, 17)
+                .addGap(69, 69, 69)
                 .addComponent(jLabel8)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(lblNombreCliente))
@@ -231,9 +221,9 @@ public class FacturaUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(lblApellidoCliente))
-                .addGap(17, 17, 17)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(lblDireccionCliente))
@@ -249,9 +239,9 @@ public class FacturaUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(lblMontoVenta))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(15, 15, 15))
+                .addGap(101, 101, 101))
         );
 
         pack();
